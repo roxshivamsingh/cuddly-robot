@@ -17,6 +17,15 @@ export interface Dataset {
     borderColor: string;
 }
 
+
+export interface ICryptoItem {
+    code: string;
+    symbol: string;
+    rate: string;
+    description: string;
+    rate_float: number;
+}
+
 export const _populations = {
     "data": [
         {

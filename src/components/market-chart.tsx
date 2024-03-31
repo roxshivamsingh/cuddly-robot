@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import _ from "lodash";
 const _data: IMarketItem = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    labels: [],
     datasets: [
         {
             color: "white",
@@ -46,7 +46,7 @@ export function MarketChart() {
     return (<Paper sx={{ p: 2, borderRadius: 3 }}>
         <Stack spacing={2}>
             <Typography variant='h5' gutterBottom sx={{ textAlign: "center" }}>
-                Market Overview
+                Population Overview
             </Typography>
             <Divider />
 
