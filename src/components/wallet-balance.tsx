@@ -97,8 +97,7 @@ export function WalletBalance() {
                                 </Grid>
                                 <Grid item xs={6} sm={6} md={6} lg={6} sx={{ display: "flex", flexDirection: "row-reverse" }}>
                                     <Stack direction='row'>
-                                        <div dangerouslySetInnerHTML={{ __html: row.symbol }} />
-                                        {row.rate_float}
+                                        <div dangerouslySetInnerHTML={{ __html: row.symbol }} />&nbsp;{row.rate_float}
                                     </Stack>
                                 </Grid>
 
