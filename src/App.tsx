@@ -31,14 +31,15 @@ import Typography from '@mui/material/Typography';
 
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Badge, Chip, Stack } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import { grey, green } from '@mui/material/colors';
+import { useState } from 'react';
 
 const width = 280;
 
 
 function App() {
 
-  // const [active, setActive] = useState('home');
+  const [isActive, setIsActive] = useState('Home');
 
   return (<Box sx={{ display: 'flex' }}>
     <CssBaseline />
@@ -70,9 +71,11 @@ function App() {
                   fontWeight: 700,
                   backgroundClip: "text",
                   textFillColor: "transparent",
-                  backgroundImage: "radial-gradient(circle at top left, #FFFF00 0%, #008000 100%)",
+                  backgroundImage: `radial-gradient(circle at top left, #FFFF00 0%, ${green[800]} 100%)`,
                 }}
-              >Carbon</Typography>
+              >
+                Carbon
+              </Typography>
               <Typography variant='h5' fontWeight='bold'
                 sx={{
                   backgroundClip: "text",
@@ -81,13 +84,12 @@ function App() {
                 }}
               >Cell</Typography>
             </Stack>
-
             <IconButton>
               <MenuIcon />
-
             </IconButton>
 
-          </Stack>        </Toolbar>
+          </Stack>
+        </Toolbar>
         <Paper
           component="form"
           sx={{
@@ -109,24 +111,27 @@ function App() {
 
         </Paper>
         <List>
-          {SIDEBAR_PRIMARY_ITEMS.map((item, index) => (
-            <ListItem
-
-              key={index} disablePadding>
-              <ListItemButton
-
-              >
-                <ListItemIcon>
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText primary={item.title}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {SIDEBAR_PRIMARY_ITEMS.map((item, index) => {
+            const color = isActive === item.title ? green[500] : 'inherit'
+            return (
+              <ListItem
+                key={index} disablePadding>
+                <ListItemButton
+                  onClick={() => { setIsActive(item.title) }}
+                  sx={{ color }}
+                >
+                  <ListItemIcon sx={{ color }}>
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={item.title}
+                  />
+                </ListItemButton>
+              </ListItem>
+            )
+          })}
         </List>
-        <Box sx={{ my: '10rem' }} />
-        {/* <Divider /> */}
+        <Box sx={{ my: '4rem' }} />
+
         <List>
           {SIDEBAR_SECONDARY_ITEMS.map((item, index) => (
             <ListItem key={index} disablePadding>
@@ -140,7 +145,7 @@ function App() {
                   sx={{
                     borderRadius: 1,
                     width: "2rem",
-                    background: "green"
+                    background: green[800]
                   }}
                   size='small'
                 />)}
@@ -150,6 +155,7 @@ function App() {
             </ListItem>
           ))}
         </List>
+        <Box sx={{ my: '4rem' }} />
 
         <AccountCard />
 
