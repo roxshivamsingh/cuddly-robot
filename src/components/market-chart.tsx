@@ -1,27 +1,48 @@
 import { Box, Button, Divider, Paper, Stack, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
 import { Line } from "react-chartjs-2";
-const data = {
+import { APIs, IMarketItem } from "../types/market";
+import { useEffect, useState } from "react";
+import axios from "axios"
+import _ from "lodash";
+const _data: IMarketItem = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
         {
-            label: "First dataset",
+            color: "white",
+            label: "Population",
             data: [33, 53, 85, 41, 44, 65],
-            fill: true,
-            backgroundColor: "rgba(75,192,192,0.2)",
-            borderColor: "rgba(75,192,192,1)"
+            borderColor: green[800]
         },
-        {
-            label: "Second dataset",
-            data: [33, 25, 35, 51, 54, 76],
-            fill: false,
-            borderColor: "#742774"
-        }
     ]
 };
 
 
 export function MarketChart() {
+    const [data, setData] = useState<IMarketItem>(_data);
+
+    useEffect(() => {
+        axios.get(APIs.Population).then((response) => {
+            const results = response?.data?.data;
+            if (response.status === 200) {
+                setData((prev) => ({
+                    ...prev,
+                    labels: _.map(results, 'Population').reverse(),
+                    datasets: [
+                        {
+                            ...prev.datasets[0],
+                            data: _.map(results, 'Year').reverse(),
+                        }
+                    ]
+                }
+                ))
+
+            }
+
+        })
+
+    }, [])
+
     return (<Paper sx={{ p: 2, borderRadius: 3 }}>
         <Stack spacing={2}>
             <Typography variant='h5' gutterBottom sx={{ textAlign: "center" }}>

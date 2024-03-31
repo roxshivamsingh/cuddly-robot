@@ -1,26 +1,21 @@
 import { green } from "@mui/material/colors";
-import { Box, Button, Fade, Grid, Menu, MenuItem, Stack, Typography } from "@mui/material";
+import {
+    Box,
+    Button,
+    Fade,
+    Grid,
+    Menu,
+    MenuItem,
+    Stack,
+    Typography
+} from "@mui/material";
 import { AssetCard, RecentPost, WalletBalance } from ".";
 import { MarketChart } from "./market-chart";
 import { useState } from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { _assets } from "../types/asset";
-
-// import { useEffect } from "react";
-// import axios from "axios";
-// import { ChartExample } from "./chart-example";
-
 export function Content() {
-    // useEffect(() => {
-
-
-    //     axios.get('https://datausa.io/api/data?drilldowns=Nation&measures=Population').then((response) => {
-
-    //         console.log(response.data)
-    //     })
-    // }, [])
-
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -37,7 +32,7 @@ export function Content() {
         <CustomHeader />
 
         <Box sx={{ my: 3 }} />
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
             <Grid item xs={12} sm={12} md={12} lg={5}>
                 <MarketChart />
             </Grid>
