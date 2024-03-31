@@ -1,5 +1,3 @@
-import { Box, Button, Divider, Paper, Stack, Typography } from '@mui/material';
-import { green } from '@mui/material/colors';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -85,45 +83,11 @@ const data = {
 };
 
 export function ChartExample() {
-    return (<>
-        {/* <Line options={options} data={data} /> */}
+    return (
 
-        <Paper sx={{
-            p: 1,
+        <Pie data={data}
+            options={options}
+        />
 
-        }}>
-            <Typography variant='h5' gutterBottom
-                sx={{ textAlign: "center" }}
-            >Wallet Balance</Typography>
-            <Divider />
-
-            <Box sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center"
-            }}>
-
-                <Box sx={{ maxWidth: 300 }}>
-                    <Pie data={data}
-                        options={options}
-                    />
-                </Box>
-                <Stack justifyContent='space-between'>
-
-                </Stack>
-
-                <Button
-                    sx={{
-                        textTransform: "none",
-                        background: green[600],
-                        color: "white",
-                        "&:hover": { background: green[700] }
-                    }}
-                    variant='contained'>
-                    Manage Wallet
-                </Button>
-            </Box>
-        </Paper>
-    </>);
+    );
 }

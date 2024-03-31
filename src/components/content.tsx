@@ -1,6 +1,7 @@
 import { green } from "@mui/material/colors";
-import { Box, Button, Stack } from "@mui/material";
-import { RecentPost } from ".";
+import { Box, Button, Grid, Stack } from "@mui/material";
+import { RecentPost, WalletBalance } from ".";
+import { MarketChart } from "./market-chart";
 // import { useEffect } from "react";
 // import axios from "axios";
 // import { ChartExample } from "./chart-example";
@@ -21,9 +22,18 @@ export function Content() {
     >
         <CustomHeader />
 
-        <RecentPost />
-        {/* <ChartExample /> */}
-
+        <Box sx={{ my: 3 }} />
+        <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={12} lg={5}>
+                <MarketChart />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={3}>
+                <WalletBalance />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={4}>
+                <RecentPost />
+            </Grid>
+        </Grid>
     </Box >
     );
 }
