@@ -18,6 +18,7 @@ import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
+import MenuIcon from '@mui/icons-material/Menu';
 // import Divider from '@mui/material/Divider';
 // import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -29,14 +30,15 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Badge, Chip } from '@mui/material';
+import { Badge, Chip, Stack } from '@mui/material';
 import { grey } from '@mui/material/colors';
-// import DirectionsIcon from '@mui/icons-material/Directions';
 
 const width = 280;
 
 
 function App() {
+
+  // const [active, setActive] = useState('home');
 
   return (<Box sx={{ display: 'flex' }}>
     <CssBaseline />
@@ -54,7 +56,38 @@ function App() {
       anchor="left"
     >
       <Box >
-        <Toolbar />
+        <Toolbar  >
+          <Stack sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%"
+          }}>
+            <Stack>
+              <Typography variant='h4'
+                sx={{
+                  fontWeight: 700,
+                  backgroundClip: "text",
+                  textFillColor: "transparent",
+                  backgroundImage: "radial-gradient(circle at top left, #FFFF00 0%, #008000 100%)",
+                }}
+              >Carbon</Typography>
+              <Typography variant='h5' fontWeight='bold'
+                sx={{
+                  backgroundClip: "text",
+                  textFillColor: "transparent",
+                  backgroundImage: "radial-gradient(circle at center center, #CBCAA5 0%, #334d50 100%)"
+                }}
+              >Cell</Typography>
+            </Stack>
+
+            <IconButton>
+              <MenuIcon />
+
+            </IconButton>
+
+          </Stack>        </Toolbar>
         <Paper
           component="form"
           sx={{
@@ -77,16 +110,22 @@ function App() {
         </Paper>
         <List>
           {SIDEBAR_PRIMARY_ITEMS.map((item, index) => (
-            <ListItem key={index} disablePadding>
-              <ListItemButton >
+            <ListItem
+
+              key={index} disablePadding>
+              <ListItemButton
+
+              >
                 <ListItemIcon>
                   {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={item.title} />
+                <ListItemText primary={item.title}
+                />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
+        <Box sx={{ my: '10rem' }} />
         {/* <Divider /> */}
         <List>
           {SIDEBAR_SECONDARY_ITEMS.map((item, index) => (
@@ -111,21 +150,22 @@ function App() {
             </ListItem>
           ))}
         </List>
+
         <AccountCard />
 
       </Box>
-    </Drawer>
+    </Drawer >
     <Box
       component="main"
       sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
     >
       <Toolbar />
       <Typography paragraph>
-        remark..
+        Still in progress roxshivamsingh@gmail.com
       </Typography>
     </Box>
 
-  </Box>
+  </Box >
   )
 }
 
