@@ -42,7 +42,7 @@ export function WalletBalance() {
             </Typography>
             <Divider />
 
-            <Stack spacing={2} >
+            <Stack spacing={1} >
                 <Box
                     sx={{
                         display: "flex",
@@ -69,7 +69,7 @@ export function WalletBalance() {
                     alignItems: "center",
                     // background: "red"
                 }}>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={1}>
                         <Grid item xs={6} sm={6} md={6} lg={6}>USDT</Grid>
                         <Grid item xs={6} sm={6} md={6} lg={6} sx={{ textAlign: "right" }}>$500.0</Grid>
                         <Grid item xs={6} sm={6} md={6} lg={6} >NBST</Grid>
