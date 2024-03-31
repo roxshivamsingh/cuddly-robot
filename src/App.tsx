@@ -1,6 +1,6 @@
+import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
 import CasinoOutlinedIcon from '@mui/icons-material/CasinoOutlined';
@@ -9,15 +9,32 @@ import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalance
 import HourglassEmptyOutlinedIcon from '@mui/icons-material/HourglassEmptyOutlined';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Typography } from '@mui/material';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import Divider from '@mui/material/Divider';
+// import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
 
-const drawerWidth = 240;
-const SIDEBAR_ITEMS = [
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Badge } from '@mui/material';
+// import DirectionsIcon from '@mui/icons-material/Directions';
+
+const width = 280;
+
+const SIDEBAR_PRIMARY_ITEMS = [
   {
     title: 'Home',
     isActive: true,
@@ -49,8 +66,22 @@ const SIDEBAR_ITEMS = [
     isActive: false,
     icon: <AccountBalanceWalletOutlinedIcon />
   },
-
 ];
+const SIDEBAR_SECONDARY_ITEMS = [
+  {
+    title: 'Notifications',
+    icon: <NotificationsNoneIcon />,
+  },
+  {
+    title: 'Support',
+    icon: <HelpOutlineOutlinedIcon />,
+  },
+  {
+    title: 'Settings',
+
+    icon: <SettingsOutlinedIcon />
+  }
+]
 function App() {
 
   return (
@@ -58,10 +89,10 @@ function App() {
       <CssBaseline />
       <Drawer
         sx={{
-          width: drawerWidth,
+          width: width,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: width,
             boxSizing: 'border-box',
           },
         }}
@@ -69,9 +100,28 @@ function App() {
         anchor="left"
       >
         <Toolbar />
-        <Divider />
+        {/* <Divider /> */}
+        <Paper
+          component="form"
+          sx={{
+            p: '2px 4px',
+            display: 'flex',
+            alignItems: 'center',
+            m: 1
+          }}
+        >
+          <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="Search.."
+            inputProps={{ 'aria-label': 'search' }}
+          />
+
+        </Paper>
         <List>
-          {SIDEBAR_ITEMS.map((item, index) => (
+          {SIDEBAR_PRIMARY_ITEMS.map((item, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton >
                 <ListItemIcon>
@@ -83,18 +133,19 @@ function App() {
           ))}
         </List>
         <Divider />
-        {/* <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+        <List>
+          {SIDEBAR_SECONDARY_ITEMS.map((item, index) => (
+            <ListItem key={index} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={item.title} />
               </ListItemButton>
             </ListItem>
           ))}
-        </List> */}
+        </List>
+        <AccountCard />
       </Drawer>
       <Box
         component="main"
@@ -104,10 +155,35 @@ function App() {
         <Typography paragraph>
           remark..
         </Typography>
-
       </Box>
+
     </Box>
   )
 }
 
 export default App
+
+function AccountCard() {
+  return (
+    <Card sx={{ m: 1 }}>
+      <CardHeader
+        avatar={
+          <Badge variant='dot' color='secondary'>
+            <AccountCircleOutlinedIcon fontSize='large' />
+          </Badge>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title="Shivam Singh"
+        subheader="example@gmail.com"
+      />
+
+
+
+
+    </Card>
+  );
+}
